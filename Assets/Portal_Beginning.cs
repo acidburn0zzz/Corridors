@@ -6,9 +6,9 @@ public class Portal_Beginning : MonoBehaviour {
 	void OnCollisionEnter(Collision col)
 	{
 		print("Collision detected:"+col.gameObject.tag);
-		if (col.gameObject.tag.Equals("Player"))
+		if (col.gameObject.tag.Equals("ThePlayer"))
 		{
-			GameObject theObject = GameObject.Find("Player");
+			GameObject theObject = GameObject.Find("ThePlayer");
 			theObject.transform.position = new Vector3(-5.0f, theObject.transform.position.y, theObject.transform.position.z);
 		}
 	}

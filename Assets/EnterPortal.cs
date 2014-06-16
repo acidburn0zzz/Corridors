@@ -24,6 +24,7 @@ public class EnterPortal : MonoBehaviour {
 			{
 				GameObject playerObject = GameObject.Find("ThePlayer");
 				playerObject.transform.position = targetPlane.transform.position;
+				playerObject.transform.eulerAngles = new Vector3(0, 0, 0);
 				//collision.transform.position = new Vector3(-4.02239f, -0.7922654f, 0.04430723f);
 			}else{
 				print(target + "not found.");

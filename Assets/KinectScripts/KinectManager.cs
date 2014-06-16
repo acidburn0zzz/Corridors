@@ -826,7 +826,7 @@ public class KinectManager : MonoBehaviour
 		int hr = 0;
 		
 		try
-		{
+		{	
 			hr = KinectWrapper.NuiInitialize(KinectWrapper.NuiInitializeFlags.UsesSkeleton |
 				KinectWrapper.NuiInitializeFlags.UsesDepthAndPlayerIndex |
 				(ComputeColorMap ? KinectWrapper.NuiInitializeFlags.UsesColor : 0));
@@ -1436,7 +1436,8 @@ public class KinectManager : MonoBehaviour
 					{
 						DetectGesture(UserId, gesture);
 					}
-					
+
+					print ("user.detected");
 					// notify the gesture listeners about the new user
 					foreach(KinectGestures.GestureListenerInterface listener in gestureListeners)
 					{
