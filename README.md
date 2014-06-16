@@ -1,4 +1,4 @@
-Unity_AMazeMe
+Corridors
 =============
 
 Another Unity Maze with Kinect Support
