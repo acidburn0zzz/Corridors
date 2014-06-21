@@ -9,9 +9,15 @@ public class SimpleMove : MonoBehaviour
 	public float hoverForce = 2.0f;
     private Vector3 cameraDir;
 
+	private Vector3 curEuler;
+
+	private bool rotating = true;
+
     // Use this for initialization
     void Start()
     {
+		GameObject playerObject = GameObject.Find("ThePlayer");
+		curEuler = playerObject.transform.eulerAngles;
     }
 
 	void Update()
@@ -27,8 +33,9 @@ public class SimpleMove : MonoBehaviour
 		}
 		
 		if (Input.GetKey (KeyCode.LeftArrow)) {
-			transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
-			
+			//transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+			RotateAngle(90);
+
 		}
 		if (Input.GetKey (KeyCode.RightArrow)) {
 			//transform.Rotate(0, turnSpeed * Time.deltaTime, 0, Space.World);
@@ -36,4 +43,17 @@ public class SimpleMove : MonoBehaviour
 		}
 			//transform.RotateAround (, Vector3.up, turnSpeed * Time.d
     }
+
+	void RotateAngle(float angle){
+		if (rotating) return; // ignore calls to RotateAngle while rotating
+		rotating = true; // set the flag
+		var newAngle = transform.eulerAngles.y+angle; // calculate the new angle
+		while (curEuler.y < newAngle){
+			// move a little step at constant speed to the new angle:
+			curEuler.y = Mathf.MoveTowards(curEuler.y, newAngle, 90.0f*Time.deltaTime);
+			transform.eulerAngles = curEuler; // update the object's rotation...
+			 // and let Unity free till the next fra
+		}
+		rotating = false;
+	}
 }

@@ -6,6 +6,9 @@ public class PresentationScript : MonoBehaviour
 {
 		
 	private GestureListener gestureListener;
+
+	private float turnSpeed = 150.0f;
+	private float moveSpeed = 10f;
 	
 
 	
@@ -29,28 +32,39 @@ public class PresentationScript : MonoBehaviour
 			print ("Kinect Manager is not initialized");
 			return;
 		}
+		GameObject playerObject = GameObject.Find("ThePlayer");
+
 		if (gestureListener.IsSwipeLeft ())
-			RotateLeft ();
+			RotateLeft (playerObject);
 		else if (gestureListener.IsSwipeRight ())
-			RotateRight ();
+			RotateRight (playerObject);
 		else if (gestureListener.IsSwipeUp())
-			print ("up");
+			Forward(playerObject);
 		else if(gestureListener.IsSwipeDown())
-			print ("down");
+			Backward(playerObject);
 
 					
 	}
-	
-	
-	private void RotateLeft()
+
+	private void Forward(GameObject playerObject )
 	{
-		print ("Rotate Left");
+		playerObject.transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Camera.main.transform);
+	}
+
+	private void Backward(GameObject playerObject )
+	{
+		playerObject.transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime, Camera.main.transform);
+	}
+
+	private void RotateLeft(GameObject playerObject )
+	{
+		playerObject.transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
 	}
 	
 	
-	private void RotateRight()
+	private void RotateRight(GameObject playerObject )
 	{
-		print ("Rotate Right");
+		playerObject.transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
 	}
 	
 	
