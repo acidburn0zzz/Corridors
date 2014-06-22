@@ -7,16 +7,11 @@ public class RotateAround : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		Screen.SetResolution(3840, 1080, true);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		GameObject theObject = GameObject.Find("ThePlayer");
-		print (theObject.transform.rotation.y);
-		if (targetRotation > theObject.transform.rotation.y) {
-			float rotation = Time.deltaTime * 45f;
-			theObject.transform.Rotate (0, rotation, 0, Space.Self);
-		}
+
 	}
 }

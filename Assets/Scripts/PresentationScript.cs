@@ -7,8 +7,8 @@ public class PresentationScript : MonoBehaviour
 		
 	private GestureListener gestureListener;
 
-	private float turnSpeed = 150.0f;
-	private float moveSpeed = 10f;
+	private float turnSpeed = 250.0f;
+	private float moveSpeed = 20f;
 	
 
 	
@@ -38,10 +38,10 @@ public class PresentationScript : MonoBehaviour
 			RotateLeft (playerObject);
 		else if (gestureListener.IsSwipeRight ())
 			RotateRight (playerObject);
-		else if (gestureListener.IsSwipeUp())
+		else if (gestureListener.IsLeftHandRisen())
 			Forward(playerObject);
-		else if(gestureListener.IsSwipeDown())
-			Backward(playerObject);
+		else if(gestureListener.IsRightHandRisen())
+			Forward(playerObject);
 
 					
 	}

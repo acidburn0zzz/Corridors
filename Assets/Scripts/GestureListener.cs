@@ -9,8 +9,8 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
 	
 	private bool swipeLeft;
 	private bool swipeRight;
-	private bool swipeUp;
-	private bool swipeDown;
+	private bool riseLeftHand;
+	private bool riseRightHand;
 	
 	
 	public bool IsSwipeLeft()
@@ -35,22 +35,22 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
 		return false;
 	}
 	
-	public bool IsSwipeUp()
+	public bool IsRightHandRisen()
 	{
-		if(swipeUp)
+		if(riseRightHand)
 		{
-			swipeUp = false;
+			riseRightHand = false;
 			return true;
 		}
 		
 		return false;
 	}
 	
-	public bool IsSwipeDown()
+	public bool IsLeftHandRisen()
 	{
-		if(swipeDown)
+		if(riseLeftHand)
 		{
-			swipeDown = false;
+			riseLeftHand = false;
 			return true;
 		}
 		
@@ -66,10 +66,10 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
 		
 		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeLeft);
 		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeRight);
-		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeUp);
-		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeDown);
-
-		print("Swipe left or right.");
+		//manager.DetectGesture(userId, KinectGestures.Gestures.SwipeUp);
+		//manager.DetectGesture(userId, KinectGestures.Gestures.SwipeDown);
+		manager.DetectGesture(userId, KinectGestures.Gestures.RaiseRightHand);
+		manager.DetectGesture(userId, KinectGestures.Gestures.RaiseLeftHand);
 	}
 	
 	public void UserLost(uint userId, int userIndex)
@@ -91,15 +91,19 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
 		print (sGestureText);
 
 		
-		if(gesture == KinectGestures.Gestures.SwipeLeft)
+		if (gesture == KinectGestures.Gestures.SwipeLeft){
 			swipeLeft = true;
-		else if(gesture == KinectGestures.Gestures.SwipeRight)
+		}else if (gesture == KinectGestures.Gestures.SwipeRight){
 			swipeRight = true;
-		else if(gesture == KinectGestures.Gestures.SwipeUp)
-			swipeUp = true;
-		else if(gesture == KinectGestures.Gestures.SwipeDown)
-			swipeDown = true;
-		
+		//else if (gesture == KinectGestures.Gestures.SwipeUp)
+		//	swipeUp = true;
+		//else if (gesture == KinectGestures.Gestures.SwipeDown)
+		//	swipeDown = true;
+		}else if (gesture == KinectGestures.Gestures.RaiseLeftHand){
+			riseLeftHand = true;
+		}else if (gesture == KinectGestures.Gestures.RaiseRightHand){
+			riseRightHand = true;
+		}
 		return true;
 	}
 
