@@ -52,7 +52,9 @@ public class KinectGestures
 		Jump,
 		Squat,
 		Push,
-		Pull
+		Pull,
+		LeanLeft,
+		LeanRight
 	}
 	
 	
@@ -1045,6 +1047,24 @@ public class KinectGestures
 				break;
 
 			// here come more gesture-cases
+		case Gestures.LeanLeft:
+			switch(gestureData.state)
+			{
+			case 0:
+				break;
+			case 1:
+				break;
+			}
+			break;
+		case Gestures.LeanRight:
+			switch(gestureData.state)
+			{
+			case 0:
+				break;
+			case 1:
+				break;
+			}
+			break;
 		}
 	}
 

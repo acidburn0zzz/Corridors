@@ -16,8 +16,6 @@ public class EnterPortal : MonoBehaviour {
 	}
 
 	void OnParticleCollision(GameObject collision) {
-		print ("Collision detected");
-		print (collision.tag);
 		if (collision.tag == "Player") {
 			GameObject targetPlane = GameObject.Find(target);
 			if (targetPlane != null)
