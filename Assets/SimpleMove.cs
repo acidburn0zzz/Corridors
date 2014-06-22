@@ -32,6 +32,11 @@ public class SimpleMove : MonoBehaviour
 			//transform.Rotate(0, turnSpeed * Time.deltaTime, 0, Space.World);
 			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
 		}
+
+		if (Input.GetKey (KeyCode.LeftArrow)) {
+			//transform.Rotate(0, turnSpeed * Time.deltaTime, 0, Space.World);
+			transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+		}
 			//transform.RotateAround (, Vector3.up, turnSpeed * Time.d
     }
 
