@@ -9,6 +9,8 @@ public class PresentationScript : MonoBehaviour
 
 	private float turnSpeed = 250.0f;
 	private float moveSpeed = 20f;
+
+	private GameObject guiMsg;
 	
 
 	
@@ -16,11 +18,11 @@ public class PresentationScript : MonoBehaviour
 	{
 		// hide mouse cursor
 		Screen.showCursor = false;
-		
+		guiMsg = GameObject.Find("GestureMsg");
 		// get the gestures listener
 		gestureListener = Camera.main.GetComponent<GestureListener>();
-		if (gestureListener) {
-			print("gestureListener initialized");
+		if (!gestureListener) {
+			print("Gesture Listener not found");
 		}
 	}
 	
