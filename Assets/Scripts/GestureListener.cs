@@ -12,7 +12,6 @@ public class GestureListener : MonoBehaviour, KinectGestures.GestureListenerInte
 	private bool riseLeftHand;
 	private bool riseRightHand;
 	
-	
 	public bool IsSwipeLeft()
 	{
 		if(swipeLeft)

@@ -23,6 +23,7 @@ public class Jukebox : MonoBehaviour {
 		myList.Add (Resources.Load("Music/Stimmung 04") as AudioClip);
 		myList.Add (Resources.Load("Music/Stimmung 05") as AudioClip);
 
+		audio.loop = true;
 		// Set Music at beginning
 		SwitchMusic (Sound4Corridor.Gang1);
 	}
@@ -59,8 +60,8 @@ public class Jukebox : MonoBehaviour {
 
 		audio.loop = true;
 		audio.clip = clipToPlay;
-		audio.PlayOneShot (clipToPlay, 1.0F);
-		//audio.Play();
+		//audio.PlayOneShot (clipToPlay, 1.0F);
+		audio.Play();
 	}
 	
 }

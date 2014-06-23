@@ -7,8 +7,8 @@ public class PresentationScript : MonoBehaviour
 		
 	private GestureListener gestureListener;
 
-	private float turnSpeed = 250.0f;
-	private float moveSpeed = 20.0f;
+	private float turnSpeed = 150.0f;
+	private float moveSpeed = 0.4f;
 
 	private GameObject guiMsg;
 	
@@ -26,15 +26,16 @@ public class PresentationScript : MonoBehaviour
 		}
 	}
 	
-	void Update() 
+	private void UpdateOldOne() 
 	{
+		GameObject playerObject = GameObject.Find("ThePlayer");
 		// dont run Update() if there is no user
 		KinectManager kinectManager = KinectManager.Instance;
 		if (!kinectManager || !kinectManager.IsInitialized () || !kinectManager.IsUserDetected ()) {
 			print ("Kinect Manager is not initialized");
+			Forward(playerObject);
 			return;
 		}
-		GameObject playerObject = GameObject.Find("ThePlayer");
 
 		if (gestureListener.IsSwipeLeft ())
 			RotateLeft (playerObject);
@@ -46,6 +47,32 @@ public class PresentationScript : MonoBehaviour
 			Forward(playerObject);
 
 					
+	}
+
+	void Update() 
+	{
+		GameObject playerObject = GameObject.Find("ThePlayer");
+		// dont run Update() if there is no user
+		KinectManager kinectManager = KinectManager.Instance;
+		if (!kinectManager || !kinectManager.IsInitialized () || !kinectManager.IsUserDetected ()) {
+			print ("Kinect Manager is not initialized");
+			Forward(playerObject);
+			return;
+		}
+		
+		//if (gestureListener.IsSwipeLeft ())
+		//	RotateLeft (playerObject);
+		//else if (gestureListener.IsSwipeRight ())
+		//	RotateRight (playerObject);
+		if (gestureListener.IsLeftHandRisen())
+			RotateLeft (playerObject);
+		else if(gestureListener.IsRightHandRisen())
+			RotateRight (playerObject);
+		else {
+			Forward(playerObject);
+		}
+		
+		
 	}
 
 	private void Forward(GameObject playerObject )
