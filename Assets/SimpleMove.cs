@@ -26,21 +26,17 @@ public class SimpleMove : MonoBehaviour
 		if (Input.GetKey (KeyCode.UpArrow)) {
 			//transform.position = new Vector3 (transform.position.x - 0.09f, transform.position.y, transform.position.z);
 			transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed, Camera.main.transform);
-		}
-
-		if (Input.GetKey (KeyCode.RightArrow)) {
+		}else if (Input.GetKey (KeyCode.RightArrow)) {
 			//transform.Rotate(0, turnSpeed * Time.deltaTime, 0, Space.World);
 			transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-		}
-
-		if (Input.GetKey (KeyCode.LeftArrow)) {
+		}else if (Input.GetKey (KeyCode.LeftArrow)) {
 			//transform.Rotate(0, turnSpeed * Time.deltaTime, 0, Space.World);
 			transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
-		}
-
-		if (Input.GetKey (KeyCode.DownArrow)) {
+		}else if (Input.GetKey (KeyCode.DownArrow)) {
 			//transform.position = new Vector3 (transform.position.x - 0.09f, transform.position.y, transform.position.z);
 			transform.Translate(-Vector3.forward * Time.deltaTime * moveSpeed, Camera.main.transform);
+		}else if (Input.GetKey (KeyCode.R)) {
+			Application.LoadLevel (0);
 		}
 			//transform.RotateAround (, Vector3.up, turnSpeed * Time.d
     }
