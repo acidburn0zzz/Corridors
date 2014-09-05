@@ -43,15 +43,96 @@ public class EnterPortal : MonoBehaviour {
 		Gang naechsterGang = null;
 
 		if (targetCorridor == "planeGang1"){
-			naechsterGang = new Gang("planeGang1", "Gang1/Boden", "Gang1/Decke", "Gang1/Wand", "planeGang4", "planeGang4", "planeGang4", "planeGang4", Jukebox.Sound4Corridor.Gang1);
+			naechsterGang = new Gang("planeGang1", Jukebox.Sound4Corridor.Gang1);
+
+			// Textures
+			naechsterGang.boden = "Gang1/Boden";
+			naechsterGang.decke = "Gang1/Decke";
+			naechsterGang.wand = "Gang1/Wand";
+
+			// Portale
+			naechsterGang.port1 = "planeGang4";
+			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port3 = "planeGang4";
+			naechsterGang.port4 = "planeGang4";
 		}else if (targetCorridor == "planeGang2"){
-			naechsterGang = new Gang("planeGang2", "Gang2/Boden", "Gang2/decke", "Gang2/wand", "1", "2", "3", "4", Jukebox.Sound4Corridor.Gang2);
+			naechsterGang = new Gang("planeGang2", Jukebox.Sound4Corridor.Gang2);
+			
+			// Textures
+			naechsterGang.boden = "Gang2/Boden";
+			naechsterGang.decke = "Gang2/decke";
+			naechsterGang.wand = "Gang2/wand";
+			
+			// Portale
+			naechsterGang.port1 = "Gang";
+			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port3 = "planeGang4";
+			naechsterGang.port4 = "planeGang4";
 		}else if (targetCorridor == "planeGang3"){
-			naechsterGang = new Gang("planeGang3", "Gang3", "Gang3", "Gang3", "1", "2", "3", "4", Jukebox.Sound4Corridor.Gang3);
+			naechsterGang = new Gang("planeGang3", Jukebox.Sound4Corridor.Gang3);
+			
+			// Textures
+			naechsterGang.boden = "Gang3";
+			naechsterGang.decke = "Gang3";
+			naechsterGang.wand = "Gang3";
+			
+			// Portale
+			naechsterGang.port1 = "planeGang4";
+			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port3 = "planeGang4";
+			naechsterGang.port4 = "planeGang4";
 		}else if (targetCorridor == "planeGang4"){
-			naechsterGang = new Gang("planeGang4", "Gang4", "Gang4", "Gang4", "Gang4", "planeGang1", "planeGang1", "planeGang1", Jukebox.Sound4Corridor.Gang4);
+			naechsterGang = new Gang("planeGang4", Jukebox.Sound4Corridor.Gang4);
+			
+			// Textures
+			naechsterGang.boden = "Gang4";
+			naechsterGang.decke = "Gang4";
+			naechsterGang.wand = "Gang4";
+			
+			// Portale
+			naechsterGang.port1 = "planeGang4";
+			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port3 = "planeGang4";
+			naechsterGang.port4 = "planeGang4";
 		}else if (targetCorridor == "planeGang5"){
-			naechsterGang = new Gang("planeGang5", "Gang5", "Gang5", "Gang5", "1", "2", "3", "4", Jukebox.Sound4Corridor.Gang5);
+			naechsterGang = new Gang(targetCorridor, Jukebox.Sound4Corridor.Gang5);
+			
+			// Textures
+			naechsterGang.boden = "Gang5";
+			naechsterGang.decke = "Gang5";
+			naechsterGang.wand = "Gang5";
+			
+			// Portale
+			naechsterGang.port1 = "planeGang4";
+			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port3 = "planeGang4";
+			naechsterGang.port4 = "planeGang4";
+		}else if (targetCorridor == "planeGang6"){
+			naechsterGang = new Gang("planeGang6", Jukebox.Sound4Corridor.Gang6);
+			
+			// Textures
+			naechsterGang.boden = "Gang6";
+			naechsterGang.decke = "Gang6";
+			naechsterGang.wand = "Gang6";
+			
+			// Portale
+			naechsterGang.port1 = "planeGang4";
+			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port3 = "planeGang4";
+			naechsterGang.port4 = "planeGang4";
+		}else if (targetCorridor == "planeGang7"){
+			naechsterGang = new Gang("planeGang7", Jukebox.Sound4Corridor.Gang7);
+			
+			// Textures
+			naechsterGang.boden = "Gang7";
+			naechsterGang.decke = "Gang7";
+			naechsterGang.wand = "Gang7";
+			
+			// Portale
+			naechsterGang.port1 = "planeGang4";
+			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port3 = "planeGang4";
+			naechsterGang.port4 = "planeGang4";
 		}else{
 			print ("Wrong arguments for changing the sound...");
 			return;
@@ -72,23 +153,24 @@ public class EnterPortal : MonoBehaviour {
 	public void SetTextures(Gang corridor){
 		GameObject[] boeden = GameObject.FindGameObjectsWithTag ("Boden");
 		foreach (GameObject boden in boeden){
-			PhotoScript other = (PhotoScript) boden.GetComponent(typeof(PhotoScript));
-			other.path = corridor.boden;
-			other.Reload();
+			PhotoScript bodenScript = (PhotoScript) boden.GetComponent(typeof(PhotoScript));
+			bodenScript.path = corridor.boden;
+			bodenScript.Reload();
 		}
 
 		GameObject[] waende = GameObject.FindGameObjectsWithTag ("Wand");
 		foreach (GameObject wand in waende){
-			PhotoScript other = (PhotoScript) wand.GetComponent(typeof(PhotoScript));
-			other.path = corridor.wand;
-			other.Reload();
+			PhotoScript wandScript = (PhotoScript) wand.GetComponent(typeof(PhotoScript));
+			wandScript.path = corridor.wand;
+			wandScript.Reload();
 		}
 
 		GameObject[] decken = GameObject.FindGameObjectsWithTag ("Decke");
 		foreach (GameObject decke in decken){
-			PhotoScript other = (PhotoScript) decke.GetComponent(typeof(PhotoScript));
-			other.path = corridor.decke;
-			other.Reload();
+			print ("found decke");
+			PhotoScript deckeScript = (PhotoScript) decke.GetComponent(typeof(PhotoScript));
+			deckeScript.path = corridor.decke;
+			deckeScript.Reload();
 		}
 	}
 
@@ -124,6 +206,7 @@ public class EnterPortal : MonoBehaviour {
 	public class Gang {
 
 		public string name { get; set; }
+
 		public string boden { get; set; }
 		public string decke { get; set; }
 		public string wand { get; set; }
@@ -135,16 +218,8 @@ public class EnterPortal : MonoBehaviour {
 
 		public Jukebox.Sound4Corridor sound { get; set; }
 
-		public Gang(string name, string boden, string decke, string wand, string port1, string port2, string port3, string port4, Jukebox.Sound4Corridor sound ){
+		public Gang(string name, Jukebox.Sound4Corridor sound ){
 			this.name = name;
-			this.boden = boden;
-			this.decke = decke;
-			this.wand = wand;
-			this.port1 = port1;
-			this.port2 = port1;
-			this.port3 = port1;
-			this.port4 = port1;
-
 			this.sound = sound;
 		}
 	}

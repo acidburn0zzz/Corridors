@@ -12,7 +12,9 @@ public class Jukebox : MonoBehaviour {
 		Gang2,
 		Gang3,
 		Gang4,
-		Gang5
+		Gang5,
+		Gang6,
+		Gang7
 	}
 
 	// Use this for initialization
