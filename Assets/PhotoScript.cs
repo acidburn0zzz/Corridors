@@ -20,6 +20,10 @@ public class PhotoScript : MonoBehaviour {
 		}
 	}
 
+	public void Reload (){
+		frames = Resources.LoadAll(path);
+	}
+
 	void changeTexture()
 	{
 		int index = (int) (Time.time * framesPerSecond) % frames.Length;
