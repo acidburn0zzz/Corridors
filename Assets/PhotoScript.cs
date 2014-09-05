@@ -21,6 +21,7 @@ public class PhotoScript : MonoBehaviour {
 	}
 
 	public void Reload (){
+		frames.Initialize ();
 		frames = Resources.LoadAll(path);
 	}
 
