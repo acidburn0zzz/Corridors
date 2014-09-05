@@ -153,23 +153,24 @@ public class EnterPortal : MonoBehaviour {
 	public void SetTextures(Gang corridor){
 		GameObject[] boeden = GameObject.FindGameObjectsWithTag ("Boden");
 		foreach (GameObject boden in boeden){
-			PhotoScript bodenScript = (PhotoScript) boden.GetComponent(typeof(PhotoScript));
-			bodenScript.path = corridor.boden;
-			bodenScript.Reload();
+			SetTextureAndReload(boden, corridor.boden);
 		}
 
 		GameObject[] waende = GameObject.FindGameObjectsWithTag ("Wand");
 		foreach (GameObject wand in waende){
-			PhotoScript wandScript = (PhotoScript) wand.GetComponent(typeof(PhotoScript));
-			wandScript.path = corridor.wand;
-			wandScript.Reload();
+			SetTextureAndReload(wand, corridor.wand);
 		}
 
 		GameObject[] decken = GameObject.FindGameObjectsWithTag ("Decke");
 		foreach (GameObject decke in decken){
-			print ("found decke");
-			PhotoScript deckeScript = (PhotoScript) decke.GetComponent(typeof(PhotoScript));
-			deckeScript.path = corridor.decke;
+			SetTextureAndReload(decke, corridor.decke);
+		}
+	}
+
+	private void SetTextureAndReload(GameObject theObject, string path){
+		if (theObject.GetComponent(typeof(PhotoScript)) != null){
+			PhotoScript deckeScript = (PhotoScript) theObject.GetComponent(typeof(PhotoScript));
+			deckeScript.path = path;
 			deckeScript.Reload();
 		}
 	}
