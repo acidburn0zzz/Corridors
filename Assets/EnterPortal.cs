@@ -7,7 +7,7 @@ public class EnterPortal : MonoBehaviour {
 
 	private ArrayList gaenge = new ArrayList();
 
-	private string aktuellePortalId = "planeGang1";
+	public string aktuellePortalId = "planeGang1";
 
 	// Use this for initialization
 	void Start () {
@@ -39,7 +39,7 @@ public class EnterPortal : MonoBehaviour {
 	private void SetAudioAndTextures(GameObject playerObject, string targetCorridor)
 	{
 		Jukebox theJukebox = (Jukebox) playerObject.GetComponent(typeof(Jukebox));
-
+		Debug.Break ();
 		Gang naechsterGang = null;
 
 		if (targetCorridor == "planeGang1"){
@@ -95,7 +95,7 @@ public class EnterPortal : MonoBehaviour {
 			naechsterGang.port3 = "planeGang4";
 			naechsterGang.port4 = "planeGang4";
 		}else if (targetCorridor == "planeGang5"){
-			naechsterGang = new Gang(targetCorridor, Jukebox.Sound4Corridor.Gang5);
+			naechsterGang = new Gang("planeGang5", Jukebox.Sound4Corridor.Gang5);
 			
 			// Textures
 			naechsterGang.boden = "Gang5";
@@ -180,16 +180,19 @@ public class EnterPortal : MonoBehaviour {
 		foreach (GameObject start in startPortale){
 			EnterPortal other = (EnterPortal) start.GetComponent(typeof(EnterPortal));
 			other.target = corridor.name;
+			other.aktuellePortalId = corridor.name;
 		}
 		GameObject[] port1Portale = GameObject.FindGameObjectsWithTag ("Port1");
 		foreach (GameObject start in startPortale){
 			EnterPortal other = (EnterPortal) start.GetComponent(typeof(EnterPortal));
 			other.target = corridor.port1;
+			other.aktuellePortalId = corridor.name;
 		}
 		GameObject[] port2Portale = GameObject.FindGameObjectsWithTag ("Port2");
 		foreach (GameObject start in startPortale){
 			EnterPortal other = (EnterPortal) start.GetComponent(typeof(EnterPortal));
 			other.target = corridor.port2;
+			other.aktuellePortalId = corridor.name;
 		}
 		GameObject[] port3Portale = GameObject.FindGameObjectsWithTag ("Port3");
 		foreach (GameObject start in startPortale){
@@ -200,8 +203,8 @@ public class EnterPortal : MonoBehaviour {
 		foreach (GameObject start in startPortale){
 			EnterPortal other = (EnterPortal) start.GetComponent(typeof(EnterPortal));
 			other.target = corridor.port4;
+			other.aktuellePortalId = corridor.name;
 		}
-
 	}
 
 	public class Gang {
