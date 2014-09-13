@@ -66,19 +66,19 @@ public class PresentationScript : MonoBehaviour
 		//	RotateLeft (playerObject);
 		//else if (gestureListener.IsSwipeRight ())
 		//	RotateRight (playerObject);
-		if (gestureListener.IsLeftHandRisen())
+		if (gestureListener.IsLeftHandRisen()){
 			if (!kinectVonHinten){
 				RotateLeft (playerObject);
 			}else{
 				RotateRight (playerObject);
 			}
-		else if(gestureListener.IsRightHandRisen())
+		}else if(gestureListener.IsRightHandRisen()){
 			if (!kinectVonHinten){
-				RotateRight (playerObject)
+				RotateRight (playerObject);
 			}else{
 				RotateLeft (playerObject);
 			}
-		else {
+		}else {
 			Forward(playerObject);
 		}
 		
