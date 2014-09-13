@@ -7,7 +7,7 @@ public class PresentationScript : MonoBehaviour
 		
 	private GestureListener gestureListener;
 
-	private float turnSpeed = 150.0f;
+	private float turnSpeed = 170.0f;
 	private float moveSpeed = 0.4f;
 
 	private GameObject guiMsg;
