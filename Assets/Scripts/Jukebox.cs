@@ -14,7 +14,8 @@ public class Jukebox : MonoBehaviour {
 		Gang4,
 		Gang5,
 		Gang6,
-		Gang7
+		Gang7,
+		Gang8
 	}
 
 	// Use this for initialization
@@ -24,6 +25,9 @@ public class Jukebox : MonoBehaviour {
 		myList.Add (Resources.Load("Music/Stimmung 03") as AudioClip);
 		myList.Add (Resources.Load("Music/Stimmung 04") as AudioClip);
 		myList.Add (Resources.Load("Music/Stimmung 05") as AudioClip);
+		myList.Add (Resources.Load("Music/Stimmung 06") as AudioClip);
+		myList.Add (Resources.Load("Music/Stimmung 07") as AudioClip);
+		myList.Add (Resources.Load("Music/Stimmung 08") as AudioClip);
 
 		audio.loop = true;
 		// Set Music at beginning
@@ -49,6 +53,15 @@ public class Jukebox : MonoBehaviour {
 			break;
 		case Sound4Corridor.Gang5:
 			clipToPlay = myList[4];
+			break;
+		case Sound4Corridor.Gang6:
+			clipToPlay = myList[5];
+			break;
+		case Sound4Corridor.Gang7:
+			clipToPlay = myList[6];
+			break;
+		case Sound4Corridor.Gang8:
+			clipToPlay = myList[7];
 			break;
 		default:
 			break;

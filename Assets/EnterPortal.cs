@@ -5,9 +5,7 @@ public class EnterPortal : MonoBehaviour {
 
 	public string target;
 
-	private ArrayList gaenge = new ArrayList();
-
-	public string aktuellePortalId = "planeGang1";
+	//public string aktuellePortalId = "";
 
 	// Use this for initialization
 	void Start () {
@@ -21,8 +19,7 @@ public class EnterPortal : MonoBehaviour {
 
 	void OnParticleCollision(GameObject collision) {
 		if (collision.tag == "Player") {
-			print ("test");
-			GameObject targetPlane = GameObject.Find(aktuellePortalId);
+			GameObject targetPlane = GameObject.Find(target);
 			if (targetPlane != null)
 			{
 				GameObject playerObject = GameObject.Find("ThePlayer");
@@ -39,7 +36,6 @@ public class EnterPortal : MonoBehaviour {
 	private void SetAudioAndTextures(GameObject playerObject, string targetCorridor)
 	{
 		Jukebox theJukebox = (Jukebox) playerObject.GetComponent(typeof(Jukebox));
-		Debug.Break ();
 		Gang naechsterGang = null;
 
 		if (targetCorridor == "planeGang1"){
@@ -51,10 +47,10 @@ public class EnterPortal : MonoBehaviour {
 			naechsterGang.wand = "Gang1/Wand";
 
 			// Portale
-			naechsterGang.port1 = "planeGang4";
-			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port1 = "planeGang2";
+			naechsterGang.port2 = "planeGang3";
 			naechsterGang.port3 = "planeGang4";
-			naechsterGang.port4 = "planeGang4";
+			naechsterGang.port4 = "planeGang5";
 		}else if (targetCorridor == "planeGang2"){
 			naechsterGang = new Gang("planeGang2", Jukebox.Sound4Corridor.Gang2);
 			
@@ -64,10 +60,10 @@ public class EnterPortal : MonoBehaviour {
 			naechsterGang.wand = "Gang2/wand";
 			
 			// Portale
-			naechsterGang.port1 = "Gang";
-			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port1 = "planeGang1";
+			naechsterGang.port2 = "planeGang3";
 			naechsterGang.port3 = "planeGang4";
-			naechsterGang.port4 = "planeGang4";
+			naechsterGang.port4 = "planeGang5";
 		}else if (targetCorridor == "planeGang3"){
 			naechsterGang = new Gang("planeGang3", Jukebox.Sound4Corridor.Gang3);
 			
@@ -77,10 +73,10 @@ public class EnterPortal : MonoBehaviour {
 			naechsterGang.wand = "Gang3";
 			
 			// Portale
-			naechsterGang.port1 = "planeGang4";
-			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port1 = "planeGang1";
+			naechsterGang.port2 = "planeGang2";
 			naechsterGang.port3 = "planeGang4";
-			naechsterGang.port4 = "planeGang4";
+			naechsterGang.port4 = "planeGang5";
 		}else if (targetCorridor == "planeGang4"){
 			naechsterGang = new Gang("planeGang4", Jukebox.Sound4Corridor.Gang4);
 			
@@ -90,10 +86,10 @@ public class EnterPortal : MonoBehaviour {
 			naechsterGang.wand = "Gang4";
 			
 			// Portale
-			naechsterGang.port1 = "planeGang4";
-			naechsterGang.port2 = "planeGang4";
-			naechsterGang.port3 = "planeGang4";
-			naechsterGang.port4 = "planeGang4";
+			naechsterGang.port1 = "planeGang1";
+			naechsterGang.port2 = "planeGang2";
+			naechsterGang.port3 = "planeGang3";
+			naechsterGang.port4 = "planeGang5";
 		}else if (targetCorridor == "planeGang5"){
 			naechsterGang = new Gang("planeGang5", Jukebox.Sound4Corridor.Gang5);
 			
@@ -103,9 +99,9 @@ public class EnterPortal : MonoBehaviour {
 			naechsterGang.wand = "Gang5";
 			
 			// Portale
-			naechsterGang.port1 = "planeGang4";
-			naechsterGang.port2 = "planeGang4";
-			naechsterGang.port3 = "planeGang4";
+			naechsterGang.port1 = "planeGang1";
+			naechsterGang.port2 = "planeGang2";
+			naechsterGang.port3 = "planeGang3";
 			naechsterGang.port4 = "planeGang4";
 		}else if (targetCorridor == "planeGang6"){
 			naechsterGang = new Gang("planeGang6", Jukebox.Sound4Corridor.Gang6);
@@ -133,24 +129,37 @@ public class EnterPortal : MonoBehaviour {
 			naechsterGang.port2 = "planeGang4";
 			naechsterGang.port3 = "planeGang4";
 			naechsterGang.port4 = "planeGang4";
+		}else if (targetCorridor == "planeGang8"){
+			naechsterGang = new Gang("planeGang8", Jukebox.Sound4Corridor.Gang8);
+			
+			// Textures
+			naechsterGang.boden = "Gang7";
+			naechsterGang.decke = "Gang7";
+			naechsterGang.wand = "Gang7";
+			
+			// Portale
+			naechsterGang.port1 = "planeGang4";
+			naechsterGang.port2 = "planeGang4";
+			naechsterGang.port3 = "planeGang4";
+			naechsterGang.port4 = "planeGang4";
 		}else{
 			print ("Wrong arguments for changing the sound...");
 			return;
 		}
 
 		theJukebox.SwitchMusic (naechsterGang.sound);
-		SetTextures (naechsterGang);
-		SetPortals (naechsterGang);
+		//SetTextures (naechsterGang);
+		//SetPortals (naechsterGang);
 
 		// umbenennen der Startfläche
-		GameObject beginningPlane = GameObject.Find (aktuellePortalId);
-		beginningPlane.name = naechsterGang.name;
+		//GameObject beginningPlane = GameObject.Find (aktuellePortalId);
+		//beginningPlane.name = naechsterGang.name;
 
-		// setzen der aktuellen portalId
-		aktuellePortalId = naechsterGang.name;
+			// setzen der aktuellen portalId
+		//aktuellePortalId = naechsterGang.name;
 	}
 
-	public void SetTextures(Gang corridor){
+	private void SetTextures(Gang corridor){
 		GameObject[] boeden = GameObject.FindGameObjectsWithTag ("Boden");
 		foreach (GameObject boden in boeden){
 			SetTextureAndReload(boden, corridor.boden);
@@ -175,35 +184,36 @@ public class EnterPortal : MonoBehaviour {
 		}
 	}
 
-	public void SetPortals(Gang corridor){
+	private void SetPortals(Gang corridor){
 		GameObject[] startPortale = GameObject.FindGameObjectsWithTag ("PortStart");
 		foreach (GameObject start in startPortale){
-			EnterPortal other = (EnterPortal) start.GetComponent(typeof(EnterPortal));
-			other.target = corridor.name;
-			other.aktuellePortalId = corridor.name;
+			EnterPortal s1 = (EnterPortal) start.GetComponent(typeof(EnterPortal));
+			s1.target = corridor.name;
+			//s1.aktuellePortalId = corridor.name;
 		}
 		GameObject[] port1Portale = GameObject.FindGameObjectsWithTag ("Port1");
-		foreach (GameObject start in startPortale){
-			EnterPortal other = (EnterPortal) start.GetComponent(typeof(EnterPortal));
-			other.target = corridor.port1;
-			other.aktuellePortalId = corridor.name;
+		foreach (GameObject por1 in startPortale){
+			EnterPortal s2 = (EnterPortal) por1.GetComponent(typeof(EnterPortal));
+			s2.target = corridor.port1;
+			//s2.aktuellePortalId = corridor.name;
 		}
 		GameObject[] port2Portale = GameObject.FindGameObjectsWithTag ("Port2");
-		foreach (GameObject start in startPortale){
-			EnterPortal other = (EnterPortal) start.GetComponent(typeof(EnterPortal));
-			other.target = corridor.port2;
-			other.aktuellePortalId = corridor.name;
+		foreach (GameObject por2 in startPortale){
+			EnterPortal s3 = (EnterPortal) por2.GetComponent(typeof(EnterPortal));
+			s3.target = corridor.port2;
+			//s3.aktuellePortalId = corridor.name;
 		}
 		GameObject[] port3Portale = GameObject.FindGameObjectsWithTag ("Port3");
-		foreach (GameObject start in startPortale){
-			EnterPortal other = (EnterPortal) start.GetComponent(typeof(EnterPortal));
-			other.target = corridor.port3;
+		foreach (GameObject por3 in startPortale){
+			EnterPortal s4 = (EnterPortal) por3.GetComponent(typeof(EnterPortal));
+			s4.target = corridor.port3;
+			//s4.aktuellePortalId = corridor.name;
 		}
 		GameObject[] port4Portale = GameObject.FindGameObjectsWithTag ("Port4");
-		foreach (GameObject start in startPortale){
-			EnterPortal other = (EnterPortal) start.GetComponent(typeof(EnterPortal));
-			other.target = corridor.port4;
-			other.aktuellePortalId = corridor.name;
+		foreach (GameObject por4 in startPortale){
+			EnterPortal s5 = (EnterPortal) por4.GetComponent(typeof(EnterPortal));
+			s5.target = corridor.port4;
+			//s5.aktuellePortalId = corridor.name;
 		}
 	}
 
