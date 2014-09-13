@@ -11,6 +11,8 @@ public class PresentationScript : MonoBehaviour
 	private float moveSpeed = 0.4f;
 
 	private GameObject guiMsg;
+
+	private bool kinectVonHinten = true;
 	
 
 	
@@ -65,9 +67,17 @@ public class PresentationScript : MonoBehaviour
 		//else if (gestureListener.IsSwipeRight ())
 		//	RotateRight (playerObject);
 		if (gestureListener.IsLeftHandRisen())
-			RotateLeft (playerObject);
+			if (!kinectVonHinten){
+				RotateLeft (playerObject);
+			}else{
+				RotateRight (playerObject);
+			}
 		else if(gestureListener.IsRightHandRisen())
-			RotateRight (playerObject);
+			if (!kinectVonHinten){
+				RotateRight (playerObject)
+			}else{
+				RotateLeft (playerObject);
+			}
 		else {
 			Forward(playerObject);
 		}
